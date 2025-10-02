@@ -12,7 +12,7 @@ Route::get('/pcr', function () {
 });
 
 Route::get('/mahasiswa', function () {
-    return 'Hello Mahasisswa';
+    return 'Hello Mahasisswsada';
 });
 
 Route::get('/nama/{param1}', function ($param1) {
