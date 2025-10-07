@@ -51,20 +51,28 @@
 </head>
 <body>
 
-    <div class="thankyou-container">
-        <h2>Terima Kasih, {{ $nama }} 🎉</h2>
-        <p class="lead">Pertanyaan Anda telah berhasil dikirim.</p>
-
-        <blockquote>
-            <strong>Pertanyaan Anda:</strong><br>
-            {{ $pertanyaan }}
-        </blockquote>
-
-        <p class="email-info mt-4">
-            Pertanyaan Anda akan segera kami tanggapi dan balas melalui email
-            <strong>{{ $email }}</strong>.<br><br>
-            Mohon cek kotak masuk atau folder spam Anda secara berkala.
-        </p>
+    <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sign Up Form</h5>
+                        <form action="#" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
 

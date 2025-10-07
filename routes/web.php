@@ -6,6 +6,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthControler;
 
 Route::get('/pcr', function () {
     return 'Selamat datang di website PCR!';
@@ -39,3 +40,7 @@ Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
 
 Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/auth',[AuthControler::class,'index']);
+
+Route::post('/auth/login', [AuthControler::class, 'login']);

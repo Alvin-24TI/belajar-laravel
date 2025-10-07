@@ -19,6 +19,7 @@
 
         .navbar {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            a
         }
 
         .hero-section {
@@ -128,40 +129,54 @@
         </div>
     </section>
 
-    {{-- FORM QUESTION --}}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Form Pertanyaan</h5>
-            <form action="{{ route('question.store') }}" method="POST">
-                @csrf
 
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" name="nama">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                        <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
-                </form>
+    {{-- Error message --}}\
+    <div class="card-body">
+        <h5 class="card-title">Form Pertanyaan</h5>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        {{-- FORM QUESTION --}}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Form Pertanyaan</h5>
+                <form action="{{ route('question.store') }}" method="POST">
+                    @csrf
+
+                    <form action="" method="POST">
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pertanyaan" class="form-label">Pertanyaan</label>
+                            <textarea class="form-control" rows="4" name="pertanyaan">{{ old('email') }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
+                    </form>
+            </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 My Laravel App. All Rights Reserved.</p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 My Laravel App. All Rights Reserved.</p>
+            </div>
+        </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
