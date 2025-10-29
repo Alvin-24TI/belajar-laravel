@@ -1,6 +1,29 @@
 @extends('admin.template')
 @section('title','Edit user')
 @section('content')
+
+{{-- FLASH DATA --}}
+@if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> Terjadi beberapa masalah dengan input Anda.
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+
+
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -39,13 +62,13 @@
                                    <!-- Name -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" id="name" name="name" class="form-control" required>
+                                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $dataUser->name) }}" required>
                                     </div>
 
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" required>
+                                        <input type="text" id="email" name="email" class="form-control" value="{{ old('email', $dataUser->email) }}" required>
                                     </div>
                                 </div>
 
